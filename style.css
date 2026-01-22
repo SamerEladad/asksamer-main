@@ -1,0 +1,518 @@
+/* GLOBAL RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  color: #111827;
+
+  /* Use dynamic viewport height on mobile to avoid “more space on top” */
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 20px;
+}
+
+/* FLAG BACKGROUND - VERTICAL COLUMNS (created via flags.js) */
+.flag-bg {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.flag-column {
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  line-height: 2.2;
+  opacity: 0.15;
+  white-space: nowrap;
+}
+
+.flag-column.up { animation: scrollUp 40s linear infinite; }
+.flag-column.down { animation: scrollDown 40s linear infinite; }
+
+@keyframes scrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes scrollDown {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+/* CONTENT CONTAINER */
+main {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 32px;
+  max-width: 420px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* wider cards on tablets and up */
+@media (min-width: 768px) {
+  main { max-width: 520px; }
+}
+
+/* ~70% viewport width on desktop */
+@media (min-width: 1024px) {
+  main { max-width: 70vw; }
+}
+
+/* TYPOGRAPHY */
+h1 {
+  font-size: 2.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #4b5563;
+  margin-bottom: 18px;
+}
+
+/* LINKS PAGE COMING SOON TEXT */
+.coming-soon {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* DOTS ANIMATION */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #9ca3af;
+  opacity: 0.4;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+.dot:nth-child(2) { animation-delay: 0.15s; }
+.dot:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.3; }
+  40% { transform: translateY(-6px); opacity: 1; }
+}
+
+/* NAVIGATION */
+nav a {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: #111827;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+nav a:hover { background: #f3f4f6; }
+
+/* SOCIAL ICONS */
+.social {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: #111827;
+  font-size: 0.9rem;
+}
+
+.social a:hover { opacity: 0.7; }
+
+/* compact variants (used in booking box) */
+.social.compact {
+  margin-top: 14px;
+  justify-content: center;
+  gap: 14px;
+}
+.social.compact a { font-size: 0.85rem; }
+
+/* CONTACT SECTION */
+.contact {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.contact a {
+  color: #111827;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+.contact.compact {
+  margin-top: 14px;
+  padding-top: 14px;
+  font-size: 0.85rem;
+}
+
+/* DISCLAIMER */
+.disclaimer {
+  margin-top: 14px;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  line-height: 1.4;
+}
+
+.disclaimer.compact { margin-top: 10px; }
+
+/* FOOTER LINKS */
+.footer-links {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.8rem;
+}
+
+.footer-links a {
+  color: #6b7280;
+  text-decoration: none;
+  margin: 0 8px;
+  transition: color 0.2s;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: #111827;
+  text-decoration: underline;
+}
+
+.footer-links.compact {
+  margin-top: 12px;
+  padding-top: 12px;
+  text-align: center;
+}
+
+/* LEGAL PAGES SPECIFIC */
+.legal-content {
+  max-width: 720px;
+  text-align: left;
+}
+
+.legal-content h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 28px;
+  margin-bottom: 12px;
+  color: #374151;
+}
+
+.legal-content p,
+.legal-content li {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #4b5563;
+  margin-bottom: 12px;
+}
+
+.legal-content ul {
+  margin-left: 20px;
+  margin-bottom: 16px;
+}
+
+.legal-content a {
+  color: #111827;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  text-decoration: none !important;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+  color: #111827;
+  font-weight: 500;
+}
+
+.back-link:hover { background: #f3f4f6; }
+
+.back-link.compact {
+  margin-top: 0;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+}
+
+/* ---------------------------- */
+/* BOOKING PAGE ORDERING RULES  */
+/* ---------------------------- */
+
+/* keep booking card narrower by default */
+.book-card { max-width: 420px; }
+
+/* Desktop-only helper (keeps mobile frozen) */
+@media (max-width: 1023px) {
+  .desktop-only { display: none; }
+}
+
+/*
+MOBILE/TABLET (<=1023px):
+Wanted order:
+Card 1 (booking-head)
+Card 3 (Calendly)
+Card 2 (booking-info / what you get)
+We achieve this WITHOUT changing HTML by flattening booking-left using display: contents.
+*/
+.booking-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1023px) {
+  .booking-left { display: contents; }      /* flatten children into booking-grid */
+  .booking-head { order: 1; }
+  .booking-right { order: 2; }             /* Calendly */
+  .booking-info { order: 3; }              /* What you get */
+}
+
+/* booking columns base */
+.booking-left, .booking-right { width: 100%; }
+
+/* Calendly wrapper */
+.calendly-wrapper {
+  margin-top: 8px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+/* Mobile height (your current phone behavior) */
+.calendly-inline-widget {
+  min-width: 320px;
+  height: 900px;
+}
+
+/* Booking info box */
+.booking-box {
+  margin-top: 14px;
+  text-align: left;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+/* Center the bottom "contact / disclaimer / footer / social" area inside the booking box */
+.booking-box .social,
+.booking-box .footer-links,
+.booking-box .contact,
+.booking-box .disclaimer {
+  text-align: center;
+}
+
+.booking-box .social {
+  justify-content: center;
+}
+
+/* unify booking text rhythm */
+.booking-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.booking-title-sm {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.booking-list,
+.booking-steps {
+  margin-left: 18px;
+  margin-bottom: 12px;
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.booking-steps li { margin-bottom: 6px; }
+
+.booking-divider {
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+  margin: 12px 0;
+}
+
+.booking-note {
+  font-size: 0.85rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+
+/* Buttons inside booking bottom area should match nav button styling */
+.booking-actions a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #111827;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  background: transparent;
+}
+.booking-actions a:hover { background: #f3f4f6; }
+
+/*
+DESKTOP (>=1024px):
+Wanted layout:
+LEFT column: Card 1 then Card 2
+RIGHT column: Card 3 (Calendly)
+We must "un-flatten" booking-left and force columns explicitly.
+*/
+@media (min-width: 1024px) {
+  body.book main.book-card {
+    max-width: min(1200px, 92vw);
+    padding: 24px 26px;
+    text-align: left;
+  }
+
+  body.book .booking-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr; /* left content, right calendly */
+    gap: 18px;
+    align-items: start; /* fit content */
+  }
+
+  /* IMPORTANT: undo mobile flattening */
+  body.book .booking-left { display: block; }
+  body.book .booking-left,
+  body.book .booking-right { width: auto; }
+
+  /* Hard-place columns to prevent Calendly ever jumping left */
+  body.book .booking-left { grid-column: 1; }
+  body.book .booking-right { grid-column: 2; }
+
+  body.book .booking-head {
+    text-align: center;
+    margin: 0 0 12px 0;
+  }
+
+  body.book .booking-info { margin-top: 0; }
+
+  /* Left box fits content (no forced full height) */
+  body.book .booking-box {
+    margin-top: 0;
+    padding: 16px;
+  }
+
+  body.book .calendly-wrapper { margin-top: 0; }
+
+  /* Desktop Calendly height */
+  body.book .calendly-inline-widget {
+    height: 867px;
+  }
+
+  body.book .subtitle { margin-bottom: 0; }
+}
+
+/* BACKGROUND COLORS */
+body.home { background: #ffffff; }
+body.book { background: #f3f4f6; }
+body.links { background: #f9fafb; }
+body.legal { background: #fafafa; }
+
+/* MOBILE HOME: taller card + top/middle/bottom distribution */
+@media (max-width: 480px) {
+  body.home main.home-card {
+    min-height: 72vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  body.home .home-top { margin-top: 4px; }
+
+  body.home .home-middle {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body.home .home-bottom { margin-bottom: 2px; }
+
+  body.home nav.home-nav {
+    margin-bottom: 14px;
+  }
+
+  main { padding: 24px 20px; }
+  h1 { font-size: 2rem; }
+}
+
+/* Accessibility: visible keyboard focus */
+a:focus-visible {
+  outline: 3px solid rgba(17, 24, 39, 0.35);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .flag-column.up,
+  .flag-column.down,
+  .dot {
+    animation: none !important;
+  }
+}
