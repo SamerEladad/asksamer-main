@@ -77,6 +77,15 @@ main {
   main { max-width: 70vw; }
 }
 
+/* OPTIONAL LOGO (if you use /assets/logo.png) */
+.brandmark{
+  display:block;
+  margin: 0 auto 14px auto;
+  max-width: 84px;
+  height: auto;
+  border-radius: 14px;
+}
+
 /* TYPOGRAPHY */
 h1 {
   font-size: 2.4rem;
@@ -396,7 +405,6 @@ We achieve this WITHOUT changing HTML by flattening booking-left using display: 
   margin-bottom: 12px;
 }
 
-
 /* Buttons inside booking bottom area should match nav button styling */
 .booking-actions a {
   display: block;
@@ -501,14 +509,14 @@ body.legal { background: #fafafa; }
   h1 { font-size: 2rem; }
 }
 
-/* Accessibility: visible keyboard focus */
+/* Accessibility: keyboard focus */
 a:focus-visible {
   outline: 3px solid rgba(17, 24, 39, 0.35);
   outline-offset: 3px;
   border-radius: 10px;
 }
 
-/* Accessibility: respect reduced motion */
+/* Accessibility: reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .flag-column.up,
   .flag-column.down,

@@ -7,10 +7,7 @@
 
   function makeColumnHTML(startIndex, lines) {
     const out = [];
-    for (let i = 0; i < lines; i++) {
-      out.push(FLAGS[(startIndex + i) % FLAGS.length]);
-    }
-    // Duplicate content to allow seamless scroll
+    for (let i = 0; i < lines; i++) out.push(FLAGS[(startIndex + i) % FLAGS.length]);
     return out.join("<br>") + "<br>" + out.join("<br>") + "<br>";
   }
 
@@ -20,11 +17,10 @@
     if (w >= 1200) return 14;
     if (w >= 1024) return 12;
     if (w >= 768) return 10;
-    return 8; // mobile stays visually similar
+    return 8;
   }
 
   function renderFlags() {
-    // Remove existing if re-rendering (e.g., resize)
     const existing = document.querySelector(".flag-bg");
     if (existing) existing.remove();
 
@@ -45,10 +41,8 @@
     document.body.prepend(bg);
   }
 
-  // Initial render
   renderFlags();
 
-  // Re-render on resize (debounced)
   let t = null;
   window.addEventListener("resize", () => {
     clearTimeout(t);
